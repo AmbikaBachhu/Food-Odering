@@ -1,0 +1,30 @@
+<html>
+<body>
+<form action="{% url 'save_updatecat' %}" method="post">
+    {% csrf_token %}
+<table align="center">
+    <tr>
+            <th style="font-family: 'Arial Rounded MT Bold';color: darkorange;text-align: center;font-size: 30px">
+                No:
+            </th>
+            <th>
+                <input type="number" name="id" value="{{ up.id }}">
+            </th>
+        </tr>
+        <tr>
+            <th style="font-family: 'Arial Rounded MT Bold';color: darkorange;text-align: center;font-size: 30px">
+                Category Name:
+            </th>
+            <th>
+                <input type="text" name="category" value="{{ up.name }}">
+            </th>
+        </tr>
+    <tr>
+        <th style="text-align: center;margin-left: 50%">
+            <button type="submit" class="btn btn-outline-success" >Update</button>
+        </th>
+    </tr>
+</table>
+</form>
+</body>
+</html>

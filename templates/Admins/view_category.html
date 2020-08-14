@@ -1,0 +1,21 @@
+<html>
+    <body>
+    <a href="{% url 'all' %}" style="color: black">Back</a>
+    <table align="center" border="2">
+        <tr style="color: black;background-color: coral">
+            <th width="150">Id</th>
+            <th width="150">NAME</th>
+            <th width="150">EDIT</th>
+            <th width="150">DELETE</th>
+        </tr>
+        {% for p in category  %}
+            <tr style="color: black;background-color: darkgray">
+            <th>{{ p.id }}</th>
+                <th>{{ p.name }}</th>
+                <th><a href="{% url 'update_category' %}?mn={{ p.id}}"><button style="background-color: yellow">Edit</button></a></th>
+                <th><a href="{% url 'delete_category' %}?kl={{ p.id }}"><button style="background-color: Red">Delete</button></a></th>
+            </tr>
+        {% endfor %}
+    </table>
+    </body>
+</html>

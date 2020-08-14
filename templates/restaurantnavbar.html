@@ -1,0 +1,34 @@
+{% load static %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="#"><img src="{% static 'images/logo.png' %}" width="40" height="40"
+                                        class="d-inline-block align-top"  loading="lazy">
+    MyExpress</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav" style="margin-left: 40%;">
+    <ul class="navbar-nav" >
+      <li class="nav-item ">
+        <a class="nav-link" href="#" style="color: black">
+          <img src="{% static 'images/icons8-search-30.png' %}" width="30" height="30"
+                                        class="d-inline-block align-top"  loading="lazy">Search </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'rlogin' %}" style="color: black">
+            <img src="{% static 'images/icons8-person-48.png' %}" width="30" height="30"
+                                        class="d-inline-block align-top"  loading="lazy">Restaurant Sign In</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="{% url 'login' %}" style="color: black">
+            <img src="{% static 'images/icons8-person-48.png' %}" width="30" height="30"
+                                        class="d-inline-block align-top"  loading="lazy">Sign In</a>
+      </li>
+        <li class="nav-item">
+        <a class="nav-link" href="#" style="color: black" id="cart-icon">
+            <img src="{% static 'images/icons8-food-cart-48.png' %}" width="30" height="30"
+                                        class="d-inline-block align-top"  loading="lazy">Cart{{ cartItems }}</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>

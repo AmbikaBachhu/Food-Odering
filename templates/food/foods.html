@@ -1,0 +1,101 @@
+{% extends 'basic.html' %}
+{% load static %}
+
+{% block common %}
+<link rel="stylesheet" href="{% static 'css/food.css' %}">
+{% include 'restaurantnavbar.html' %}
+{% if rest %}
+<div class="rest" style="width: 100%;background-color: black;color: white">
+<table>
+<tr>
+<th>
+<img src="{{ rest.picture.url }}">
+</th>
+<th>
+<div class="text" style="margin-left: 10%">
+      <b><h3 class="food" style="color: whitesmoke">
+          {{ rest.rname }}
+      </h3></b>
+          <div class="cat" >
+          {% for z in rest.subcat.all %}
+              <span style="font-family: cursive;">{{ z.name }},</span>
+              {% endfor %}
+   </div>
+
+      <i class="fa fa-clock-o"> {{ rest.delivery }} Mins</i>
+      <i class="fa fa-users mx-2">Cost per 2:Rs{{ rest.price }}/-</i>
+   <div class=" stars btn" >
+       <a href="#"><i class="fa fa-star">{{ rest.votes }}rating</i></a>
+   </div></div>
+</th>
+</tr>
+</table>
+</div>
+{% endif %}
+
+
+    <div class="row">
+		<div class="col-lg-8 my-4">
+			<div class="box-element">
+
+
+    {% for foods in food  %}
+            {% if forloop.counter0|divisibleby:2 %} <div class="row text-center"> {%  endif %}
+<div class="cards">
+            <div class="box" >
+                <img src="{{ foods.imageURL }}" width="300" height="200">
+                <div class="box-element food">
+                <h3 class="title" style="font-family: 'Times New Roman';font-weight: bold">{{ foods.name }}</h3>
+                    <hr>
+                 <h6 style="display:inline-block;float: right">Rs{{ foods.price }}/- </h6>
+                    <button data-food="{{ foods.id }}" data-action="add" class="btn btn-outline-warning add-btn update-cart">Add</button>
+                </div>
+        </div>
+</div>
+    {%  if forloop.counter|divisibleby:2 or forloop.last %}</div><!-- row closing --><hr>{%  endif %}
+
+        {% endfor %}
+ </div>
+        </div>
+ <div class="col-lg-4 my-4">
+    <div class="box-element">
+<table class="table">
+    <tr>    <a style="float: right;margin: 5px" class="btn btn-outline-success" href="{% url 'update_order' %}?mn={{ order.id }}">Checkout</a>
+    <th><h5>Items:<strong>{{ order.get_cart_items }}</strong></h5></th>
+    <th><h5>Total:<strong>Rs {{ order.get_cart_total }}</strong></h5></th>
+    <th>
+    </th>
+    </tr>
+    </table>
+    </div>
+    <hr>
+    <div class="box-element">
+     <div class="cart-row">
+       <div style="flex: 2"></div>
+       <div style="flex: 2"><strong>Items</strong></div>
+       <div style="flex: 1;margin-left: 2%"><strong>Price</strong></div>
+       <div style="flex: 1"><strong>Quantity</strong></div>
+     </div>
+        {% for item in items %}
+     <div class="cart-row">
+       <div style="flex: 2"><img  class="row-image" src="{{ item.food.imageURL }}"></div>
+       <div ><p>{{ item.food.name }}</p></div>
+       <div style="flex: 1"><p>Rs {{ item.food.price }}</p></div>
+       <div style="flex: 1">
+           <div class="quantity">
+             <button data-food={{ item.food.id }}  data-action="add"  class="chg-quantity update-cart btn btn-outline-primary">
+                 +</button>
+               <p class="quantity">{{ item.quantity }}</p>
+               <button data-food={{ item.food.id }}  data-action="remove" class="chg-quantity update-cart btn btn-outline-primary">
+                   -</button>
+           </div>
+       </div>
+     </div>
+     {% endfor %}
+    </div>
+    </div>
+    </div>
+
+</div>
+<script type="text/javascript" src="{% static 'js/cart.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,247 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block common %}
+<html>
+<head>
+    <title>MyExpress</title>
+    <link rel="stylesheet" href="{%static 'css/restaurant.css'  %}" />
+  </head>
+<body>
+<table>
+<tr>
+<th width="700px">
+        <div class="navbar">
+          <div class="branding">
+            <div><img class="logo" src="{% static 'images/logo.png' %}" /></div>
+            <div class="logo-title">My Express</div>
+          </div>
+        </div>
+          <div class="container my-4">
+    <!--Carousel Wrapper-->
+    <div id="carousel-thumb" class="carousel slide  " data-ride="carousel">
+      <!--Slides-->
+      <div class="carousel-inner" role="listbox">
+        <div class="carousel-item active">
+            <h1 alt="First slide" style="height: 50px ;width: 400px;color: #660706">Feeling hungry?</h1>
+        </div>
+        <div class="carousel-item">
+            <h1 alt="First slide" style="height: 50px ;width: 400px;color: #660706">Unexpected guests?</h1>
+        </div>
+        <div class="carousel-item">
+            <h1 alt="First slide" style="height: 50px ;width: 400px;color: #660706">Cooking gone wrong?</h1>
+        </div>
+        <div class="carousel-item">
+            <h1 alt="First slide" style="height: 50px ;width: 400px;color: #660706">Order Now...</h1>
+        </div>
+      </div>
+      <!--/.Slides-->
+      <!--Controls-->
+      <a class="carousel-control-prev" href="#carousel-thumb" role="button" data-slide="prev">
+        <span class="carousel-control" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carousel-thumb" role="button" data-slide="next">
+        <span class="carousel-control" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+      <!--/.Controls-->
+
+    </div>
+    <!--/.Carousel Wrapper-->
+
+  </div>
+          <div class="sub-title" style="font-size: 30px;color:#660706" >Find awesome restaurants near you.</div>
+    <div class="sub-title" style="font-size: 35px;color: #660706" >Select Place...</div>
+
+<div style="display: flex">
+{% if place_list %}
+<table>
+<tr>
+				{% for p in place_list %}
+<th>
+							                            <a href = "{% url 'restaurant' p.id %}">
+                                                  <h1 class="mx-5">{{ p.name }}</h1><br>
+                                                        </a>
+</th>
+				{% endfor %}
+</tr>
+</table>
+			{% endif %}
+</div>
+</th>
+<th>
+<div id="carouselExampleSlidesOnly" class="carousel carousel-fade mx-4" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="{% static 'images/pizza.png' %}" class="d-block w-100" height="250" width="250">
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'images/chat.png' %}" class="d-block w-100" height="250" width="250">
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'images/PngItem_567418.png' %}" class="d-block w-100" height="150" width="150" >
+    </div>
+  </div>
+</div>
+</th>
+</tr>
+</table>
+<section id="varaties" style="background-image: url('{% static "images/img/back3.jpg" %}');background-repeat:revert;background-size: cover">
+<div class="recepie_area">
+        <div class="container">
+    <h1 class="h-primary" style="font-family:Chalkboard;font-size: 50px;margin-left:10%;color: whitesmoke"> <b>Delicious Items In Our Restarant </b></h1>
+            <div class="row my-4">
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="single_recepie text-center">
+                        <div class="recepie_thumb">
+                            <img src="{% static 'images/img/rece2.jpg' %}" width="300" height="300" style="border-radius:50%">
+                        </div>
+                        <h3 style="color: whitesmoke">Snacks</h3>
+                        <button class="btn btn-danger">Order</button>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="single_recepie text-center">
+                        <div class="recepie_thumb">
+                            <img src="{% static 'images/img/rece3.png' %}" width="300" height="300" style="border-radius:50%">
+                        </div>
+                        <h3 style="color: whitesmoke">Potato PopCorn</h3>
+                        <button class="btn btn-danger">Order</button>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-6">
+                    <div class="single_recepie text-center">
+                        <div class="recepie_thumb">
+                            <img src="{% static 'images/img/rece4.jpg' %}" width="300" height="300" style="border-radius:50%">
+                        </div>
+                        <h3 style="color: whitesmoke">Egg Masala </h3>
+                        <button class="btn btn-danger">Order</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+    <br>
+    <br>
+    <section id="foodchange" style="background-image: url('{% static "images/img/background 1.jpg" %}');background-repeat:revert;background-size: cover">
+        <h1 class="h-primary" style="font-family:Chalkboard;font-size: 50px;margin-left:20%;color: whitesmoke"> <b> Our Restaurant Famous For </b></h1>
+
+    <div class="container my-5">
+    <table >
+        <tr>
+            <th width="400">
+                <h1 class="h-primary" style="margin-left: 50%;color:darkgoldenrod;font-family: Chalkboard">Break Fast</h1>
+            </th>
+            <th width="500">
+<div id="carouselExampleSlidesOnly" class="carousel carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="{% static 'images/img/hot1.jpg' %}" class="d-block w-100" height="250" width="250">
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'images/img/hot2.jpg' %}" class="d-block w-100" height="250" width="250">
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'images/img/hot3.jpg' %}" class="d-block w-100" height="250" width="250" >
+    </div>
+  </div>
+</div>
+            </th>
+        </tr>
+    </table>
+    </div>
+
+    <div class="container my-5">
+    <table align="right">
+        <tr>
+            <th>
+<div id="carouselExampleSlidesOnly" class="carousel carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="{% static 'images/img/p1.jpg' %}" class="d-block w-100" height="250" width="250">
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'images/img/p2.jpg' %}" class="d-block w-100" height="250" width="250">
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'images/img/p3.jpg' %}" class="d-block w-100" height="250" width="250" >
+    </div>
+  </div>
+</div>
+            </th>
+            <th width="400">
+                <h1 class="h-primary" style="margin-left: 50%;color: darkgoldenrod;font-family: Chalkboard"> Lunch</h1>
+            </th>
+        </tr>
+    </table>
+    </div>
+        <br>
+        <br>
+    <div class="container my-5 ">
+    <table >
+        <tr>
+            <th width="400">
+                <h1 class="h-primary" style="margin-left: 50%;color: darkgoldenrod;font-family: Chalkboard"> Dinner</h1>
+            </th>
+            <th width="500">
+                <br>
+                <br>
+<div id="carouselExampleSlidesOnly" class="carousel carousel-fade" data-ride="carousel">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+        <img src="{% static 'images/img/p4.jpg' %}" class="d-block w-100" height="250" width="250">
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'images/img/p5.jpg' %}" class="d-block w-100" height="250" width="250">
+    </div>
+    <div class="carousel-item">
+        <img src="{% static 'images/img/p6.jpg' %}" class="d-block w-100" height="250" width="250" >
+    </div>
+  </div>
+</div>
+            </th>
+        </tr>
+    </table>
+    </div>
+
+    </section>
+<section id="download my-4">
+<br>
+    <br>
+    <div class="download_app_area">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-xl-6 col-md-6">
+                    <div class="download_thumb">
+                        <div class="big_img">
+                            <img src="{% static 'images/img/d1.jpg' %}" height="400" width="400">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-6 col-md-6">
+                    <div class="download_text">
+                        <h3 style="font-family: Chalkboard">Download app to
+                            get recipes from
+                            Everywhere</h3>
+                        <div class="download_android_apple">
+                            <a class="active" href="#">
+                                    <h5>Avaliable in App Store</h5>
+                                    <img src="{% static 'images/img/apple.jpg' %}" height="150" width="150">
+                            </a>
+                            <a href="#">
+                                <h5>Avaliable in Play Store</h5>
+
+                                    <img src="{% static 'images/img/googleplay.png' %}" height="150" width="150">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+</body>
+</html>
+{% endblock %}

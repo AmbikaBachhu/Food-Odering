@@ -1,0 +1,28 @@
+{% extends 'basic.html' %}
+{% load static %}
+{% block common %}
+<table align="center" >
+    <tr>
+        <th style="font-size: 40px;font-family: 'Californian FB'">
+            Food Page
+        </th>
+    </tr>
+</table>
+<br><br>
+<table align="center">
+    <form action="{% url 'food_save' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+
+    <tr>
+        <th>
+            {{ form.as_p }}
+        </th>
+
+        <th>
+            <div align="center"><button type="submit" class="btn btn-primary">Save</button> </div>
+        </th>
+    </tr>
+        </form>
+</table>
+
+{% endblock %}
